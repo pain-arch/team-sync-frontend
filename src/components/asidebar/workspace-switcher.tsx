@@ -101,6 +101,27 @@ export function WorkspaceSwitcher() {
                 size="lg"
                 className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground bg-gray-10"
               >
+                {activeWorkspace ? (
+                  <>
+                <div className="flex aspect-square size-8 items-center font-semibold justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                  {activeWorkspace?.name?.split(" ")?.[0]?.charAt(0)}
+                </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-semibold">
+                    {activeWorkspace?.name}
+                  </span>
+                  <span className="truncate text-xs">
+                    Free
+                  </span>
+                </div>
+                  </> 
+                ): (
+                  <div className="grid flex-1 text-left text-sm leading-tight">
+                    <span className="truncate font-semibold">
+                      No workspace selected
+                    </span>
+                  </div>
+                )}
                 <ChevronDown className="ml-auto" />
               </SidebarMenuButton>
             </DropdownMenuTrigger>
