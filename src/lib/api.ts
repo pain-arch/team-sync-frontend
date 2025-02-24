@@ -4,12 +4,14 @@ import {
   AllWorkspaceResponseType,
   AnalyticsResponseType,
   ChangeWorkspaceMemberRoleType,
+  CreateProjectPayloadType,
   CreateWorkspaceResponseType,
   CreateWorkspaceType,
   CurrentUserResponseType,
   EditWorkspaceType,
   LoginResponseType,
   loginType,
+  ProjectResponseType,
   registerType,
   WorkspaceByIdResponseType,
 } from "@/types/api.type";
@@ -112,7 +114,13 @@ export const invitedUserJoinWorkspaceMutationFn = async (
 
 //********* */
 //********* PROJECTS
-export const createProjectMutationFn = async () => {};
+export const createProjectMutationFn = async ({
+  workspaceId,
+  data,
+} : CreateProjectPayloadType): Promise<ProjectResponseType> => {
+  const responce = await API.post(`/project/workspace/${workspaceId}/create`, data);
+  return responce.data;
+};
 
 export const editProjectMutationFn = async () => {};
 
